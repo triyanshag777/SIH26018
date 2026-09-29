@@ -8,8 +8,7 @@ RUN npm run build || echo "No build script, continuing..."
 
 # Production stage
 FROM nginx:alpine
-COPY --from=build-stage /app/dist /usr/share/nginx/html || echo "No dist folder, falling back to dummy build..."
-RUN echo "<h1>DLRMS Frontend</h1>" > /usr/share/nginx/html/index.html
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Nginx config for SPA fallback
 RUN echo 'server { \
