@@ -13,6 +13,7 @@ A hackathon-grade functional prototype for end-to-end land record digitization i
 
 ```text
 ```
+```text
 ┌──────────────────────┐
 │   User / Officials   │
 └──────────┬───────────┘
@@ -48,6 +49,8 @@ A hackathon-grade functional prototype for end-to-end land record digitization i
            ▼
 ┌──────────────────────┐
 │ Blockchain Audit Log │
+└──────────────────────┘
+```
 └──────────────────────┘
 ```
 ```
