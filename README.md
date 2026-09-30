@@ -12,19 +12,44 @@ A hackathon-grade functional prototype for end-to-end land record digitization i
 ## Architecture
 
 ```text
-+-------------------+       +-----------------------+       +-------------------+
-|                   |       |                       |       |                   |
-|   React Frontend  |<----->|   FastAPI Backend     |<----->|   PostgreSQL DB   |
-|   (Dashboard)     |       |   (Core Logic)        |       |   (PostGIS)       |
-|                   |       +-----------+-----------+       +-------------------+
-+-------------------+                   |
-                                        v
-                            +-----------------------+
-                            |                       |
-                            |   Smart Contracts     |
-                            |   (Hardhat/Polygon)   |
-                            |                       |
-                            +-----------------------+
+```
+┌──────────────────────┐
+│   User / Officials   │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    FastAPI Backend   │
+│  Authentication API  │
+└──────────┬───────────┘
+           │
+           ▼
+┌───────────────────────────────────────────┐
+│          Core Processing Engine           │
+├───────────────────────────────────────────┤
+│ • Document Ingestion                      │
+│ • OCR Processing                          │
+│ • Parcel Validation                       │
+│ • Knowledge Graph Construction            │
+│ • Fraud Detection                         │
+└──────────┬────────────────────────────────┘
+           │
+           ▼
+┌───────────────────────────────────────────┐
+│          Intelligence Layer               │
+├───────────────────────────────────────────┤
+│ GIS Analysis                              │
+│ Court / RCCMS Integration                 │
+│ Review Workflow                           │
+│ Certificate Generation                    │
+│ Dashboard & Analytics                     │
+└──────────┬────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ Blockchain Audit Log │
+└──────────────────────┘
+```
 ```
 
 ## What's Real vs Simulated
@@ -73,13 +98,14 @@ docker-compose up --build
 - Phase 3 (Verification & Validation): ✅
 - Phase 4 (Blockchain Integration): ✅
 - Phase 5 (Fraud Detection & GIS): ✅
+- Phase 6 (3 D cadastral mapping with RCCMS court litigation): ✅
 
 ## Tech Stack
 - Frontend: React, Vite, TailwindCSS
 - Backend: Python, FastAPI, SQLAlchemy
 - DB: PostgreSQL + PostGIS, Redis
 - Blockchain: Solidity, Hardhat, Ethers.js
-- AI/OCR: Sarvam AI, Tesseract
+- AI/OCR: Sarvam AI, Tesseract/PaddleOCR
 
 ## Documentation
 - [Architecture](docs/architecture.md)
